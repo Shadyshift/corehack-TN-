@@ -1,5 +1,1 @@
-Working on it, now it is basicly nothing.....
-COREHACK TN, The New version of corehack that I am developing.
-
-# ADDED:
-FakeCrit, gives critparticles. :)
+Working on it. NOW IT IS BASICLY ONLY OYVEY!
