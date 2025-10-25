@@ -13,7 +13,9 @@ import me.alpha432.oyvey.features.modules.client.HudEditor;
 import me.alpha432.oyvey.features.modules.misc.MCF;
 import me.alpha432.oyvey.features.modules.movement.Fly;
 import me.alpha432.oyvey.features.modules.movement.ReverseStep;
+import me.alpha432.oyvey.features.modules.movement.Speed;
 import me.alpha432.oyvey.features.modules.movement.Step;
+import me.alpha432.oyvey.features.modules.player.AutoTotem;
 import me.alpha432.oyvey.features.modules.player.FastPlace;
 import me.alpha432.oyvey.features.modules.player.NoFall;
 import me.alpha432.oyvey.features.modules.player.Velocity;
@@ -52,6 +54,8 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new Velocity());
         modules.add(new BlockHighlight());
         modules.add(new NoFall());
+        modules.add(new Speed());
+        modules.add(new AutoTotem());
     }
 
     public Module getModuleByName(String name) {
