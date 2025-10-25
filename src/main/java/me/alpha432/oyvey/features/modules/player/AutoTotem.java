@@ -17,8 +17,10 @@ public class AutoTotem extends Module {
     private final Setting<Integer> maxTotems = register(new Setting<>("MaxTotems", 0, 0, 20));
     private final Setting<Float> healthThreshold = register(new Setting<>("HealthThreshold", 10.0f, 1.0f, 20.0f));
     private final Setting<Boolean> fallDamageSwitch = register(new Setting<>("FallDamageSwitch", false));
+    private final Setting<Integer> revertDelay = register(new Setting<>("RevertDelay", 20, 0, 100));
     private int ticks;
     private int totemCount;
+    private int revertTicks;
     private Item originalOffHandItem;
 
     public AutoTotem() {
@@ -29,6 +31,7 @@ public class AutoTotem extends Module {
     public void onEnable() {
         ticks = 0;
         totemCount = 0;
+        revertTicks = 0;
         if (Util.mc.player != null) {
             originalOffHandItem = Util.mc.player.getOffHandStack().getItem();
         } else {
@@ -41,6 +44,7 @@ public class AutoTotem extends Module {
     public void onDisable() {
         ticks = 0;
         totemCount = 0;
+        revertTicks = 0;
         originalOffHandItem = Items.AIR;
     }
 
@@ -71,8 +75,14 @@ public class AutoTotem extends Module {
                 client.interactionManager.clickSlot(client.player.currentScreenHandler.syncId, 45, 0, SlotActionType.PICKUP, client.player);
                 totemCount++;
                 ticks = 0;
+                revertTicks = 0;
             }
-        } else if (health > healthThreshold.getValue() && !shouldSwitchForFall && offHandItem == Items.TOTEM_OF_UNDYING) {
+        } else if (health > healthThreshold.getValue() && !shouldSwitchForFall && offHandItem == Items.TOTEM_OF_UNDYING && client.player.isOnGround()) {
+            if (revertTicks < revertDelay.getValue()) {
+                revertTicks++;
+                return;
+            }
+
             int originalSlot = -1;
             for (int i = 0; i < 36; i++) {
                 if (inventory.getStack(i).getItem() == originalOffHandItem) {
@@ -85,6 +95,7 @@ public class AutoTotem extends Module {
                 client.interactionManager.clickSlot(client.player.currentScreenHandler.syncId, originalSlot < 9 ? originalSlot + 36 : originalSlot, 0, SlotActionType.PICKUP, client.player);
                 client.interactionManager.clickSlot(client.player.currentScreenHandler.syncId, 45, 0, SlotActionType.PICKUP, client.player);
                 ticks = 0;
+                revertTicks = 0;
             } else if (fallback.getValue() != Items.AIR && offHandItem != fallback.getValue()) {
                 int fallbackSlot = -1;
                 for (int i = 0; i < 36; i++) {
@@ -97,6 +108,7 @@ public class AutoTotem extends Module {
                     client.interactionManager.clickSlot(client.player.currentScreenHandler.syncId, fallbackSlot < 9 ? fallbackSlot + 36 : fallbackSlot, 0, SlotActionType.PICKUP, client.player);
                     client.interactionManager.clickSlot(client.player.currentScreenHandler.syncId, 45, 0, SlotActionType.PICKUP, client.player);
                     ticks = 0;
+                    revertTicks = 0;
                 }
             }
         }
