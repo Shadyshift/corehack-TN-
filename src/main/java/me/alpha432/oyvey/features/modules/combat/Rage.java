@@ -8,7 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.decoration.EndCrystalEntity;
 import net.minecraft.network.packet.c2s.play.PlayerInteractEntityC2SPacket;
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket;
-
+// yes yes i know. rage is a bad name.
 public class Rage extends Module {
     public Rage() {
         super("FakeCrit", "Fake crit particles", Category.COMBAT, true, false, false);

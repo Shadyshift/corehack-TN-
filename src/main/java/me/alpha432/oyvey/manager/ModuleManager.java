@@ -56,6 +56,7 @@ public class ModuleManager implements Jsonable, Util {
         modules.add(new NoFall());
         modules.add(new Speed());
         modules.add(new AutoTotem());
+        modules.add(new AutoCrystal());
     }
 
     public Module getModuleByName(String name) {
