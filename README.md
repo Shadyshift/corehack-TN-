@@ -21,6 +21,9 @@ It is in development, so it has not a lot of features and it can be buggy :) *FO
 - Fly: you can fly ofcource.
 - idk anymore, this is what i know out my top of my head. Maby you need to look ;)
 
+# NOTE
+no I am not a script kid making this client. this is not that serious but more a side project because I am bored :)
+
 # LICENCE
 It is licenced under the MIT license. Look the licence file.
 
