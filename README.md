@@ -19,7 +19,3 @@ It is not really development, so it has not a lot of features and it can be bugg
 # NOTE
 no I am not a script kid making this client. this is not that serious but more a side project because I am bored :)
 
-# LICENCE
-It is licenced under the MIT license. Look the licence file.
-
-
