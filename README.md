@@ -8,7 +8,7 @@ It is not really development, so it has not a lot of features and it can be bugg
 - FightBot: You will be a pvp god ;)
 - AimAssist: helps you aim
 - TriggerBot: spams left mouse button when enemy is able to be hit
-- Velocity: you do not take damage
+- Velocity: you do not knockback
 - Speed: Options of Strafe, bunnyhop, and "legit"
 - velocity: knockback is for losers
 - Fly: you can fly ofcource.
