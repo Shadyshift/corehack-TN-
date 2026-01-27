@@ -1,5 +1,5 @@
 # Status
-It is not really development, so it has not a lot of features and it can be buggy :) *FOR EXAMPLE FREECAM IS NOT A FREECAM!!*
+there is no status, it is just a dead project 
 
 # Features:
 - Criticals: You do critical damage without jumping
